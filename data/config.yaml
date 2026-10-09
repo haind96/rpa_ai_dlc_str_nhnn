@@ -1,0 +1,58 @@
+name: "STR NHNN Consume Data Enqueue"
+version: "1.0.0"
+environment: "dev"
+
+processing_timezone: "Asia/Ho_Chi_Minh"
+processing_cutoff_day_offset: 0
+processing_date_format: "dd/MM/yyyy"
+
+paths_data_root: "/Users/hainguyen/Projects/RPA"
+paths_cumulative_template: "/Users/hainguyen/Projects/RPA/Temp/FileTheoDoi.xlsx"
+paths_workbook_lock_timeout_seconds: 60
+
+kafka_bootstrap_servers: "192.168.0.2:9093"
+kafka_topic: "RPA_STR_NHNN_INPUT"
+kafka_output_topic: "RPA_STR_NHNN_OUTPUT"
+kafka_group_id: "RPA_STR_NHNN_INPUT"
+kafka_username: "admin"
+kafka_password: "admin123"
+kafka_idle_timeout_seconds: 5
+kafka_max_poll_interval_seconds: 1800
+
+ecm_auth_url: "http://192.168.0.2:8831/auth/realms/ms-core/protocol/openid-connect/token"
+ecm_search_url: "http://192.168.0.2:8831/ecm-core-v1.0/businesses/{business_code}/files/search"
+ecm_content_url: "http://192.168.0.2:8831/ecm-core-v1.0/files/{file_id}/content"
+ecm_client_credential: "paxaKjlEcJ1W3R8j7hvom8mFP2ZFK5Fq"
+ecm_request_timeout_seconds: 30
+ecm_page_size: 100
+ecm_search_concurrency: 6
+ecm_business_codes:
+  - "mb_smart_channel"
+  - "customer_info_ca"
+  - "ss_customer_doc"
+  - "ss_auto_upload_customer_info"
+  - "customer_information"
+  - "biz_onboarding"
+
+rabbitmq_hosts: "localhost"
+rabbitmq_queue_name: "RPA_NHAPLIEUBAOCAO_STR_INPUT"
+rabbitmq_output_queue_name: "RPA_NHAPBAOCAO_STR_OUTPUT"
+rabbitmq_consumer_queue_name: "RPA_NHAPBAOCAO_STR_MOCK"
+rabbitmq_consumer_idle_timeout_seconds: 10
+rabbitmq_username: "guest"
+rabbitmq_password: "guest"
+rabbitmq_publisher_confirm: true
+
+alert_enabled: true
+alert_account_email: "khanhnt3"
+alert_strategy: "exchange"
+alert_exchange_email: "khanhnt3@mbbank.com.vn"
+alert_exchange_username: "sysadmin"
+alert_exchange_password: "changeme1"
+alert_exchange_server: "mail.mbbank.com.vn"
+alert_exchange_autodiscover: false
+alert_save_as_draft: false
+alert_save_sent_copy: false
+alert_recipient: "khanhnt3@mbbank.com.vn"
+alert_cc: ["khanhnt3@mbbank.com.vn"]
+alert_send_email_tap_trung: true
